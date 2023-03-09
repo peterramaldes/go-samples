@@ -3,12 +3,13 @@ package db
 import (
 	"database/sql"
 
-	"github.com/golang-migrate/migrate"
-	"github.com/golang-migrate/migrate/database/postgres"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
 func OpenConnection() (*sql.DB, error) {
-	conn, err := sql.Open("postgres", "host=localhost port=5432 user=gopher password=pass dbname=gosample sslmode=disable")
+	conn, err := sql.Open("postgres", "host=localhost port=5432 user=postgres password=pass dbname=gosample sslmode=disable")
 	if err != nil {
 		panic(err)
 	}
